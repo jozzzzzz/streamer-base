@@ -30,10 +30,10 @@ export default{
 			<div class="table-row">
 				<div>#{{ streamer.rank }}</div>
 				<div>{{ streamer.name }}</div>
-				<div>
+				<a :href="streamer.twitch" target="_blank">
 					<div v-if="streamer.twitch">OFFLINE</div>
 					<div v-else>LIVE</div>
-				</div>
+				</a>
 				<div>{{ streamer.compte }}</div>
 				<div>{{ streamer.elo }} {{ streamer.division }} {{ streamer.lp }}LP</div>
 				<div>{{ streamer.win + streamer.loose }}</div>
