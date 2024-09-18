@@ -81,14 +81,14 @@ button {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
+  background-color: #A388EE;
+  color: black;
+  border: 1px solid #000;
   border-radius: 5px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #C4A1FF;
 }
 </style>

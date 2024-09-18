@@ -53,26 +53,20 @@ export default{
 		box-shadow: 2px 2px 2px darkgrey;
 		border-radius: 5px;
 		background-color: #E3A018;
+		width: 60%;
+		padding: 10px;
 	}
 	.table-title {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-		padding: 1em;
+		width: 100%;
+		grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr 1fr 1fr 1fr;
 		font-weight: bold;
 		text-align: left;
 	}
-	.table-title div {
-		margin-right: 40px;
-	}
 	.table-row {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-		padding: 1em;
-		border-top: 1px solid #000;
+		width: 100%;
+		grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr 1fr 1fr 1fr;
 		text-align: left;
-		align-items: left;
-	}
-	.table-row div {
-		margin-right: 40px;
 	}
 </style>
