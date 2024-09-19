@@ -1,10 +1,12 @@
 import { createMemoryHistory, createRouter } from 'vue-router'
-import Bet from './page/Bet.vue'
+import AjouterStreamer from './page/AjouterStreamer.vue'
 import Accueil from './page/Accueil.vue'
+import Login from './page/Login.vue'
 
 const routes = [
-  { path: '/', component: Accueil },
-  { path: '/bet', component: Bet },
+  { path: '/accueil', component: Accueil },
+  { path: '/login', component: Login },
+  { path: '/addStreamer', component: AjouterStreamer },
 ]
 
 const router = createRouter({

@@ -1,31 +1,7 @@
-<script>
-export default {
-  data() {
-    return {
-      nouveauStreamer: {
-        name: '',
-        compte: '',
-        twitch: ''
-      }
-    }
-  },
-  methods: {
-    ajouterStreamer() {
-      const streamer = { 
-        ...this.nouveauStreamer, 
-        rank: this.streamers.length + 1 
-      }
-      this.streamers.push(streamer)
-      this.nouveauStreamer = { name: '', compte: '', twitch: '' } // Réinitialiser le formulaire
-    }
-  }
-}
-</script>
-
 <template>
   <div class="form-container">
     <h2>Enregistrer un nouveau streamer</h2>
-    <form @submit.prevent="ajouterStreamer">
+    <form @submit.prevent="">
       <div class="form-group">
         <label for="name">Nom du streamer</label>
         <input type="text" v-model="nouveauStreamer.name" id="name" required>
@@ -45,6 +21,20 @@ export default {
     </form>
   </div>
 </template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      nouveauStreamer: {
+        name: '',
+        compte: '',
+        twitch: ''
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 .form-container {

@@ -1,7 +1,7 @@
 <template>
   <nav>
-    <RouterLink to="/">STREAMER</RouterLink>
-    <RouterLink to="/bet">PARI</RouterLink>
+    <RouterLink to="/accueil">STREAMER</RouterLink>
+    <RouterLink to="/addStreamer">AJOUTER</RouterLink>
   </nav>
   <main>
     <RouterView />

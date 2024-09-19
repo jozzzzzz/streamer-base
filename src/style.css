@@ -1,3 +1,6 @@
+/* src/assets/styles.css ou App.vue dans une balise <style> */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -5,7 +8,7 @@
 
   color-scheme: light dark;
   color: #000000;
-  background-color: #FFDB58;
+  background: linear-gradient(#FFDB58, #8923EA);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -48,6 +51,7 @@ main {
 body {
   margin: 0;
   display: flex;
+  min-height: 100vh;
 }
 
 h1 {
