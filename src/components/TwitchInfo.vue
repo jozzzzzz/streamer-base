@@ -6,7 +6,7 @@
     </div>
     <div class="streamer-info">
       <div>
-        <img src="https://soloqchallenge.fr/assets/ranks/GRANDMASTER.png" alt="elo" class="elo-img">
+        <img :src="`https://soloqchallenge.fr/assets/ranks/${streamer.tier}.png`" alt="elo" class="elo-img">
         <div>{{ streamer.tier }} {{ streamer.rank }} {{ streamer.leaguePoints }}LP</div>
       </div>
       <a :href="streamer.twitter" target="_blank" class="twitter">

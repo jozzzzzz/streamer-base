@@ -13,6 +13,11 @@
       </div>
 
       <div class="form-group">
+        <label for="profilePicture">Pseudo Twitch</label>
+        <input type="text" v-model="nouveauStreamer.profilePicture" id="profilePicture" required>
+      </div>
+
+      <div class="form-group">
         <label for="twitch">Pseudo Twitch</label>
         <input type="text" v-model="nouveauStreamer.twitch" id="twitch" required>
       </div>
@@ -24,7 +29,7 @@
 
       <div class="form-group">
         <label for="youtube">Chaine youtube</label>
-        <input type="text" v-model="nouveauStreamer.youtube" id="youtube" required>
+        <input type="text" v-model="nouveauStreamer.youtube" id="youtube">
       </div>
 
       <button type="submit">Enregistrer</button>
@@ -41,7 +46,8 @@ export default {
         compte: '',
         twitch: '',
         twitter: '',
-        youtube: ''
+        youtube: '',
+        profilePicture: ''
       }
     }
   }
