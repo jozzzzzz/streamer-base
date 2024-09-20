@@ -9,7 +9,7 @@
         <img :src="`https://soloqchallenge.fr/assets/ranks/${streamer.tier}.png`" alt="elo" class="elo-img">
         <div>{{ streamer.tier }} {{ streamer.rank }} {{ streamer.leaguePoints }}LP</div>
       </div>
-      <a :href="streamer.twitter" target="_blank" class="twitter">
+      <a :href="`https://x.com/${streamer.twitter}`" target="_blank" class="twitter">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpevfm2P0BtgC9LbXH1n2Xp-oR-iLX8xQTBg&s" />
       </a>
     </div>

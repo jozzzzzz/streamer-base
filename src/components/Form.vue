@@ -23,7 +23,7 @@
       </div>
 
       <div class="form-group">
-        <label for="twitter">Twitter</label>
+        <label for="twitter">Pseudo twitter</label>
         <input type="text" v-model="nouveauStreamer.twitter" id="twitter" required>
       </div>
 
