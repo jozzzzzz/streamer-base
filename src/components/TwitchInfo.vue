@@ -2,12 +2,12 @@
   <div class="twitch-info">
     <div class="streamer-id">
       <img class="picture" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpevfm2P0BtgC9LbXH1n2Xp-oR-iLX8xQTBg&s" /><!-- :src="streamer.pp" -->
-      <div class="name">{{ streamer.name }}</div>
+      <div class="name">{{ streamer.pseudo }}</div>
     </div>
     <div class="streamer-info">
       <div>
         <img src="https://soloqchallenge.fr/assets/ranks/GRANDMASTER.png" alt="elo" class="elo-img">
-        <div>{{ streamer.elo }} {{ streamer.division }} {{ streamer.lp }}LP</div>
+        <div>{{ streamer.tier }} {{ streamer.rank }} {{ streamer.leaguePoints }}LP</div>
       </div>
       <a :href="streamer.twitter" target="_blank" class="twitter">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpevfm2P0BtgC9LbXH1n2Xp-oR-iLX8xQTBg&s" />
@@ -16,16 +16,10 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'TwitchInfo',
-  props: {
-    streamer: {
-      type: Object,
-      required: true
-    }
-  }
-}
+<script setup lang="ts">
+defineProps<{
+  streamer: any;
+}>();
 </script>
 
 <style scoped>
