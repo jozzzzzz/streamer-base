@@ -1,17 +1,17 @@
 import { createMemoryHistory, createRouter } from 'vue-router'
 // @ts-ignore
-import AjouterStreamer from './page/AjouterStreamer.vue'
+import AddStreamer from './page/AddStreamer.vue'
 // @ts-ignore
-import Accueil from './page/Accueil.vue'
+import Home from './page/Home.vue'
 // @ts-ignore
 import Login from './page/Login.vue'
 import { authGuard } from './auth'
 
 const routes = [
   { path: '/', redirect: '/accueil' },
-  { path: '/accueil', component: Accueil, beforeEnter: authGuard },
+  { path: '/accueil', component: Home, beforeEnter: authGuard },
   { path: '/login', component: Login },
-  { path: '/addStreamer', component: AjouterStreamer, beforeEnter: authGuard },
+  { path: '/addStreamer', component: AddStreamer, beforeEnter: authGuard },
 ]
 
 const router = createRouter({
