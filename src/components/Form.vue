@@ -39,6 +39,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const nouveauStreamer = ref({
   name: '',
@@ -56,6 +57,7 @@ const separateString = (input: string): { name: string; tag: string } => {
 
 const handleSubmit = async () => {
   try {
+    const router = useRouter();
     const result = separateString(nouveauStreamer.value.compte);
     const response = await fetch(`http://localhost:3000/streamers/${result.name}/${result.tag}`, {
       method: 'POST',
@@ -74,6 +76,7 @@ const handleSubmit = async () => {
 
     if (response.ok) {
       console.log('Streamer added');
+      router.push('/home');
     } else {
       console.error('Error adding streamer:', response);
     }

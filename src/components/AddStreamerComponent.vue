@@ -8,7 +8,7 @@
           <div>{{ streamer.name }}</div>
           <p>{{ streamer.pseudo }}</p>
         </div>
-        <i class="fa-solid fa-check"></i>
+        <i class="fa-solid fa-plus" @click="handleAdd(streamer)"></i>
       </div>
     </div>
   </div>
@@ -16,9 +16,55 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+interface Streamer {
+  name: string;
+  pseudo: string;
+  profilePicture: string;
+  twitch: string;
+  twitter: string;
+  youtube: string;
+}
+
 defineProps<{
-  streamers: any[];
-}>(); 
+  streamers: Streamer[];
+}>();
+
+const separateString = (input: string): { name: string; tag: string } => {
+  const [name, tag] = input.split('#');
+  return { name, tag };
+};
+
+const handleAdd = async (streamer: Streamer) => {
+  try {
+    const router = useRouter();
+    const result = separateString(streamer.pseudo);
+    const response = await fetch(`http://localhost:3000/streamers/${result.name}/${result.tag}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: streamer.name,
+        twitch: streamer.twitch,
+        twitter: streamer.twitter,
+        youtube: streamer.youtube,
+        profilePicture: streamer.profilePicture,
+      }),
+      credentials: 'include',
+    });
+
+    if (response.ok) {
+      console.log('Streamer added');
+      router.push('/home');
+    } else {
+      console.error('Error adding streamer:', response);
+    }
+  } catch (error) {
+    console.error('Error adding streamer:', error);
+  }
+};
 </script>
 
 <style scoped>

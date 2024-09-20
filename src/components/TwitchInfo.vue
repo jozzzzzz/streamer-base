@@ -1,7 +1,7 @@
 <template>
   <div class="twitch-info">
     <div class="streamer-id">
-      <img class="picture" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpevfm2P0BtgC9LbXH1n2Xp-oR-iLX8xQTBg&s" /><!-- :src="streamer.pp" -->
+      <img class="picture" :src="streamer.profilePicture" >
       <div class="name">{{ streamer.pseudo }}</div>
     </div>
     <div class="streamer-info">
@@ -50,7 +50,7 @@ defineProps<{
 .name{
   align-self: center;
   font-weight: bold;
-  font-size: 26px;
+  font-size: 20px;
   margin-left: 10px;
 }
 .streamer-info{

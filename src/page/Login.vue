@@ -159,6 +159,7 @@ input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+  background-color: white;
 }
 
 button {
