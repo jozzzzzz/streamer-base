@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
+  <div v-if="login" class="container">
     <div class="form-container">
+      <button @click="login = false" class="login-register">Créer un compte</button>
       <h2>Connexion</h2>
       <div class="form-group">
         <label for="email">Email</label>
@@ -13,17 +14,42 @@
       <button type="submit">Se connecter</button>
     </div>
   </div>
+  <div v-else class="container">
+    <div class="form-container">
+      <button @click="login = true" class="login-register">Se connecter</button>
+      <h2>Inscription</h2>
+      <div class="form-group">
+        <label for="newEmail">Email</label>
+        <input type="email" id="newEmail" v-model="newUser.name" />  
+      </div>
+      <div class="form-group">
+        <label for="newPassword">Mot de passe</label>
+        <input type="password" id="newPassword" v-model="newUser.password" />
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirmer le mot de passe</label>
+        <input type="password" id="confirmPassword" v-model="newUser.confirmPassword" />
+      </div>
+      <button type="submit">Créer un compte</button>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
 export default {
-  setup() {
-    const user = ref({
-      name: '',
-      password: ''
-    });
-    return { user };
+  data () {
+    return {
+      login: true,
+      user: {
+        name: '',
+        password: ''
+      },
+      newUser: {
+        name: '',
+        password: '',
+        confirmPassword: ''
+      }
+    }
   }
 }
 </script>
@@ -32,16 +58,23 @@ export default {
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 .form-container {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
   max-width: 400px;
   margin: 20px auto;
   padding: 20px;
   border: 2px solid #000;
   border-radius: 5px;
-  background-color: #E3A018;
+  background-color: #F8B5FF;
+}
+.login-register {
+  align-self: flex-end;
+}
+.form-container:last-child {
+  align-self: center;
 }
 h2 {
   text-align: center;
@@ -61,13 +94,15 @@ input {
   box-sizing: border-box;
 }
 button {
-  display: block;
-  margin: 0 auto;
   padding: 8px 15px;
   border: none;
   border-radius: 5px;
   background-color: #2D4466;
   color: white;
   cursor: pointer;
+}
+.button-group {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

@@ -4,6 +4,7 @@ import Accueil from './page/Accueil.vue'
 import Login from './page/Login.vue'
 
 const routes = [
+  { path: '/', redirect: '/login' },
   { path: '/accueil', component: Accueil },
   { path: '/login', component: Login },
   { path: '/addStreamer', component: AjouterStreamer },

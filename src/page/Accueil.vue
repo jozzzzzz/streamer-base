@@ -26,7 +26,7 @@ export default {
 	<div class="page">
 		<div class="twitch">
 			<TwitchInfo :streamer="streamers[0]"/>
-			<TwitchEmbed class="twitch-embed" channel="france_tv_slash" />
+			<TwitchEmbed class="twitch-embed" channel="vespalol" />
 		</div>
 		<Table :streamers="streamers" />
 	</div>
