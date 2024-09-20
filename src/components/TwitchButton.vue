@@ -1,22 +1,18 @@
 <template>
   <div class="container">
-    <div class="button-live">
-      <img src="/public/twitch.svg" alt="twitch" />
-      <div>twitch</div>
-    </div>
+    <a :href="twitch" target="_blank">
+      <div class="button-live">
+        <img src="/public/twitch.svg" alt="twitch" />
+        <div>twitch</div>
+      </div>
+    </a>
   </div>
 </template>
 
-<script lang="ts">
-export default{
-  name: 'TwitchButton',
-  props: {
-    twitch: {
-      type: String,
-      required: true
-    }
-  }
-}
+<script setup lang="ts">
+defineProps<{
+  twitch: string
+}>()
 </script>
 
 <style scoped>

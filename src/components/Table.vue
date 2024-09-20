@@ -24,7 +24,6 @@
 				<div>{{ Math.round(streamer.winrate) }}%</div>
 			</div>
 		</div>
-		<button @click="streamers.sort((a, b) => a.rank - b.rank)">Click me</button>
 	</div>
 
 </template>
@@ -40,7 +39,6 @@ defineProps<{
 <style scoped>
 	.table {
 		border: solid 2px #000;
-		box-shadow: 2px 2px 2px darkgrey;
 		border-radius: 5px;
 		background-color: #F8B5FF;
 		width: 100%;
