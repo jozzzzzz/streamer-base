@@ -2,41 +2,23 @@
 import Table from '../components/Table.vue';
 import TwitchEmbed from '../components/TwitchEmbed.vue';
 import TwitchInfo from '../components/TwitchInfo.vue';
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
+import { useStreamerStore } from '../stores/streamerStore';
 
-const fetchStreamers = async () => {
-  try {
-    const response = await fetch('http://localhost:3000/streamers', {
-      method: 'GET',
-      credentials: 'include',
-    });
+const streamerStore = useStreamerStore();
 
-    if (response.ok) {
-      return await response.json();
-    } else {
-      console.error('Error fetching streamers:', response);
-      return [];
-    }
-  } catch (error) {
-    console.error('Error fetching streamers:', error);
-    return [];
-  }
-};
-
-const streamers = ref<any[]>([]);
-
-onMounted(async () => {
-  streamers.value = await fetchStreamers();
+onMounted(() => {
+  streamerStore.fetchStreamers();
 });
 </script>
 
 <template>
   <div class="page">
     <div class="twitch">
-      <TwitchInfo v-if="streamers.length > 0" :streamer="streamers[0]"/>
+      <TwitchInfo v-if="streamerStore.streamers.length > 0" :streamer="streamerStore.streamers[0]"/>
       <TwitchEmbed class="twitch-embed" channel="vespalol" />
     </div>
-    <Table v-if="streamers.length > 0" :streamers="streamers" />
+    <Table v-if="streamerStore.streamers.length > 0" :streamers="streamerStore.streamers" />
   </div>
 </template>
 
