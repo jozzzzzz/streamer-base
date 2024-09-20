@@ -4,40 +4,30 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
+<script setup lang="ts">
+import { defineProps, onMounted, ref } from 'vue'
 
-export default defineComponent({
-  name: 'TwitchEmbed',
-  props: {
-    channel: {
-      type: String,
-      required: true
-    }
-  },
-  setup(props) {
-    const twitchEmbedId = ref('twitch-embed')
+const twitchEmbedId = ref('twitch-embed')
 
-    onMounted(() => {
-      const script = document.createElement('script')
-      script.src = 'https://embed.twitch.tv/embed/v1.js'
-      script.async = true
-      document.body.appendChild(script)
+const props = defineProps<{
+  channel: string
+}>()
+console.log(props.channel)
 
-      script.onload = () => {
-        new (window as any).Twitch.Embed(twitchEmbedId.value, {
-          width: '100%',
-          height: '100%',
-          channel: props.channel,
-          layout: 'video',
-          theme: 'dark'
-        })
-      }
+onMounted(() => {
+  const script = document.createElement('script')
+  script.src = 'https://embed.twitch.tv/embed/v1.js'
+  script.async = true
+  document.body.appendChild(script)
+
+  script.onload = () => {
+    new (window as any).Twitch.Embed(twitchEmbedId.value, {
+      width: '100%',
+      height: '100%',
+      channel: props.channel,
+      layout: 'video',
+      theme: 'dark'
     })
-
-    return {
-      twitchEmbedId
-    }
   }
 })
 </script>

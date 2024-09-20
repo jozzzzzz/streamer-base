@@ -1,9 +1,8 @@
 <template>
   <div class="container">
-    <div :class="['button-live', { 'bg-offline': !online, 'bg-live': online }]">
+    <div class="button-live">
       <img src="/public/twitch.svg" alt="twitch" />
-      <div v-if="online">LIVE</div>
-      <div v-else>OFFLINE</div>
+      <div>twitch</div>
     </div>
   </div>
 </template>
@@ -14,10 +13,6 @@ export default{
   props: {
     twitch: {
       type: String,
-      required: true
-    },
-    online: {
-      type: Boolean,
       required: true
     }
   }
@@ -34,16 +29,11 @@ export default{
   padding-left: 5px;
   padding-right: 10px;
   color: white;
+  background-color: #2D4466;
 }
 .button-live div{
   font-weight: bold;
   font-size: 15px;
   align-self: center;
-}
-.bg-offline{
-  background-color: #2D4466;
-}
-.bg-live{
-  background-color: #ff0000;
 }
 </style>

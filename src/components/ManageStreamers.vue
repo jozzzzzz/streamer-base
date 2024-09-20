@@ -3,38 +3,56 @@
     <div class="container">
       <div>Streamers</div>
       <div class="row" v-for="streamer in streamers">
-        <img :src="streamer.picture" :alt="streamer.name" />
+        <img :src="streamer.profilePicture" :alt="streamer.name" />
         <div class="streamer">
           <div>{{ streamer.name }}</div>
-          <p>{{ streamer.compte }}</p>
+          <p>{{ streamer.pseudo }}</p>
         </div>
-        <i class="fa-solid fa-x"></i>
+        <i class="fa-solid fa-x" @click="handleDelete(streamer)"></i>
       </div>
     </div>
   </div>
   
 </template>
 
-<script lang="ts">
-export default{
-  name: 'ManageStreamers',
-  data() {
-    return {
-      streamers: [
-        {
-          picture: 'https://pbs.twimg.com/profile_images/1721246219387744256/WMeaJ4ca_400x400.jpg',
-          name: 'Caliste',
-          compte: 'MOMO KOZUKI#soloq'
-        },
-        {
-          picture: 'https://pbs.twimg.com/profile_images/1766089564148449280/av6UisBs_400x400.jpg',
-          name: 'Wao',
-          compte: 'KAMETO BIG BOSS#SOLOQ'
-        }
-      ]
-    }
-  }
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+interface Streamer {
+  name: string;
+  pseudo: string;
+  profilePicture: string;
+  twitch: string;
+  twitter: string;
+  youtube: string;
+  id: number;
 }
+
+defineProps<{
+  streamers: Streamer[];
+}>();
+
+const handleDelete = async (streamer: Streamer) => {
+  try {
+    const router = useRouter();
+    const response = await fetch(`http://localhost:3000/streamers/${streamer.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    });
+
+    if (response.ok) {
+      console.log('Streamer removed');
+      router.push('/home');
+    } else {
+      console.error('Error removing streamer:', response);
+    }
+  } catch (error) {
+    console.error('Error removing streamer:', error);
+  }
+};
 </script>
 
 <style scoped>
