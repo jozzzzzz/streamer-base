@@ -8,7 +8,7 @@
           <div>{{ streamer.name }}</div>
           <p>{{ streamer.compte }}</p>
         </div>
-        <i class="fa-solid fa-x"></i>
+        <i class="fa-solid fa-check"></i>
       </div>
     </div>
   </div>
