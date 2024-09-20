@@ -34,7 +34,7 @@ onMounted(async () => {
   <div class="page">
     <div class="twitch">
       <TwitchInfo v-if="streamers.length > 0" :streamer="streamers[0]"/>
-      <TwitchEmbed class="twitch-embed" channel="vespalol" />
+      <TwitchEmbed v-if="streamers.length > 0" class="twitch-embed" :channel="streamers[0].twitchLink" />
     </div>
     <Table v-if="streamers.length > 0" :streamers="streamers" />
   </div>
