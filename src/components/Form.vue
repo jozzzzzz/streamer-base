@@ -13,7 +13,7 @@
       </div>
 
       <div class="form-group">
-        <label for="profilePicture">Pseudo Twitch</label>
+        <label for="profilePicture">Profile Picture</label>
         <input type="text" v-model="nouveauStreamer.profilePicture" id="profilePicture" required>
       </div>
 
