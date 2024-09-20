@@ -32,26 +32,55 @@
         <input type="text" v-model="nouveauStreamer.youtube" id="youtube">
       </div>
 
-      <button type="submit">Enregistrer</button>
+      <button type="submit" @click="handleSubmit">Enregistrer</button>
     </form>
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  data() {
-    return {
-      nouveauStreamer: {
-        name: '',
-        compte: '',
-        twitch: '',
-        twitter: '',
-        youtube: '',
-        profilePicture: ''
-      }
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const nouveauStreamer = ref({
+  name: '',
+  compte: '',
+  twitch: '',
+  twitter: '',
+  youtube: '',
+  profilePicture: ''
+});
+
+const separateString = (input: string): { name: string; tag: string } => {
+  const [name, tag] = input.split('#');
+  return { name, tag };
+};
+
+const handleSubmit = async () => {
+  try {
+    const result = separateString(nouveauStreamer.value.compte);
+    const response = await fetch(`http://localhost:3000/streamers/${result.name}/${result.tag}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: nouveauStreamer.value.name,
+        twitch: nouveauStreamer.value.twitch,
+        twitter: nouveauStreamer.value.twitter,
+        youtube: nouveauStreamer.value.youtube,
+        profilePicture: nouveauStreamer.value.profilePicture,
+      }),
+      credentials: 'include',
+    });
+
+    if (response.ok) {
+      console.log('Streamer added');
+    } else {
+      console.error('Error adding streamer:', response);
     }
+  } catch (error) {
+    console.error('Error adding streamer:', error);
   }
-}
+};
 </script>
 
 <style scoped>
